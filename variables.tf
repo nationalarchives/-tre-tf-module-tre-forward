@@ -34,7 +34,7 @@ variable "forward_image_versions" {
   })
 }
 
-variable "var.tre_permission_boundary_arn" {
+variable "tre_permission_boundary_arn" {
   description = "ARN of the TRE permission boundary policy"
   type = string
 }
