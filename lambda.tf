@@ -1,7 +1,6 @@
 # TRE-Forward Lambda
-
 resource "aws_lambda_function" "tre_forward" {
-  image_uri     = "${var.ecr_uri_host}${var.ecr_uri_repo_prefix}${var.prefix}-forward:${var.forward_image_versions.tre_forward}"
+  image_uri     = "${var.ecr_uri_host}/${var.ecr_uri_repo_prefix}${var.prefix}-forward:${var.forward_image_versions.tre_forward}"
   package_type  = "Image"
   function_name = "${var.env}-${var.prefix}-forward"
   role          = aws_iam_role.tre_forward_lambda_role.arn
