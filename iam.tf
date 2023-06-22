@@ -43,3 +43,27 @@ data "aws_iam_policy_document" "tre_forward_queue" {
     ]
   }
 }
+
+data "aws_iam_policy_document" "forward_lambda_kms_sns_policy" {
+  statement {
+    effect = "Allow"
+    actions = [
+      "kms:GenerateDataKey",
+      "kms:Decrypt"
+    ]
+    resources = var.common_tre_out_topic_kms_arn
+  }
+}
+
+resource "aws_iam_policy" "tre_out_topic_kms" {
+  name        = "${var.env}-${var.prefix}-foward-sns-key"
+  description = "The KMS SNS key policy for forward lambda"
+  policy      = data.aws_iam_policy_document.forward_lambda_kms_sns_policy
+}
+
+resource "aws_iam_role_policy_attachment" "packer_lambda_key" {
+  role       = aws_iam_role.tre_forward_lambda_role.name
+  policy_arn = aws_iam_policy.tre_out_topic_kms
+}
+
+

@@ -48,3 +48,8 @@ variable "ecr_uri_repo_prefix" {
   description = "The prefix for Docker image repository names to use; e.g. foo/ in ACCOUNT.dkr.ecr.REGION.amazonaws.com/foo/tre-bar"
   type = string
 }
+
+variable "common_tre_out_topic_kms_arn" {
+  description = "ARN of the tre-out sns topic kms key"
+  type = string
+}
