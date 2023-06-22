@@ -63,7 +63,7 @@ resource "aws_iam_policy" "tre_out_topic_kms" {
 
 resource "aws_iam_role_policy_attachment" "packer_lambda_key" {
   role       = aws_iam_role.tre_forward_lambda_role.name
-  policy_arn = aws_iam_policy.tre_out_topic_kms
+  policy_arn = aws_iam_policy.tre_out_topic_kms.arn
 }
 
 
