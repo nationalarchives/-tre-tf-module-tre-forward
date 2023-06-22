@@ -51,7 +51,7 @@ data "aws_iam_policy_document" "forward_lambda_kms_sns_policy" {
       "kms:GenerateDataKey",
       "kms:Decrypt"
     ]
-    resources = var.common_tre_out_topic_kms_arn
+    resources = [ var.common_tre_out_topic_kms_arn ]
   }
 }
 
