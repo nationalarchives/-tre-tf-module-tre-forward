@@ -58,7 +58,7 @@ data "aws_iam_policy_document" "forward_lambda_kms_sns_policy" {
 resource "aws_iam_policy" "tre_out_topic_kms" {
   name        = "${var.env}-${var.prefix}-foward-sns-key"
   description = "The KMS SNS key policy for forward lambda"
-  policy      = data.aws_iam_policy_document.forward_lambda_kms_sns_policy
+  policy      = data.aws_iam_policy_document.forward_lambda_kms_sns_policy.json
 }
 
 resource "aws_iam_role_policy_attachment" "packer_lambda_key" {
