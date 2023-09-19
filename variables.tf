@@ -53,13 +53,3 @@ variable "publish_topics_kms_arns" {
   description = "ARNs of the kms keys for the topics to be published to"
   type = list(string)
 }
-
-variable "common_tre_out_topic_kms_arn" {
-  description = "ARN of the tre-out sns topic kms key"
-  type = string
-}
-
-variable "common_da_eventbus_topic_kms_arn" {
-  description = "ARN of the tre-out sns topic kms key"
-  type = string
-}
