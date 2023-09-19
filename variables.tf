@@ -13,11 +13,6 @@ variable "account_id" {
   type        = string
 }
 
-variable "publish_topic_arns" {
-  description = "ARNs of the sns topics for the forwarder to publish to"
-  type = string
-}
-
 variable "tre_dlq_alerts_lambda_function_name" {
   description = "TRE DLQ Alerts Lambda Function Name"
   type        = string
@@ -47,6 +42,16 @@ variable "ecr_uri_host" {
 variable "ecr_uri_repo_prefix" {
   description = "The prefix for Docker image repository names to use; e.g. foo/ in ACCOUNT.dkr.ecr.REGION.amazonaws.com/foo/tre-bar"
   type = string
+}
+
+variable "publish_topic_arns" {
+  description = "ARNs of the sns topics for the forwarder to publish to"
+  type = list(string)
+}
+
+variable "publish_topics_kms_arns" {
+  description = "ARNs of the kms keys for the topics to be published to"
+  type = list(string)
 }
 
 variable "common_tre_out_topic_kms_arn" {
