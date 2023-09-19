@@ -7,7 +7,7 @@ resource "aws_lambda_function" "tre_forward" {
   timeout       = 30
   environment {
     variables = {
-      "TRE_OUT_TOPIC_ARN" = var.tre_out_topic_arn
+      "PUBLISH_TOPIC_ARNS" = var.publish_topic_arns
     }
   }
   tracing_config {

@@ -13,8 +13,8 @@ variable "account_id" {
   type        = string
 }
 
-variable "tre_out_topic_arn" {
-  description = "ARN of the tre-out sns topic"
+variable "publish_topic_arns" {
+  description = "ARNs of the sns topics for the forwarder to publish to"
   type = string
 }
 
@@ -50,6 +50,11 @@ variable "ecr_uri_repo_prefix" {
 }
 
 variable "common_tre_out_topic_kms_arn" {
+  description = "ARN of the tre-out sns topic kms key"
+  type = string
+}
+
+variable "common_da_eventbus_topic_kms_arn" {
   description = "ARN of the tre-out sns topic kms key"
   type = string
 }
