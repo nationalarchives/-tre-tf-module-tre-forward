@@ -13,11 +13,6 @@ variable "account_id" {
   type        = string
 }
 
-variable "tre_out_topic_arn" {
-  description = "ARN of the tre-out sns topic"
-  type = string
-}
-
 variable "tre_dlq_alerts_lambda_function_name" {
   description = "TRE DLQ Alerts Lambda Function Name"
   type        = string
@@ -49,7 +44,12 @@ variable "ecr_uri_repo_prefix" {
   type = string
 }
 
-variable "common_tre_out_topic_kms_arn" {
-  description = "ARN of the tre-out sns topic kms key"
-  type = string
+variable "publish_topic_arns" {
+  description = "ARNs of the sns topics for the forwarder to publish to"
+  type = list(string)
+}
+
+variable "publish_topics_kms_arns" {
+  description = "ARNs of the kms keys for the topics to be published to"
+  type = list(string)
 }

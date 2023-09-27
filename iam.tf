@@ -51,19 +51,19 @@ data "aws_iam_policy_document" "forward_lambda_kms_sns_policy" {
       "kms:GenerateDataKey",
       "kms:Decrypt"
     ]
-    resources = [ var.common_tre_out_topic_kms_arn ]
+    resources = var.publish_topics_kms_arns
   }
 }
 
-resource "aws_iam_policy" "tre_out_topic_kms" {
-  name        = "${var.env}-${var.prefix}-foward-sns-key"
+resource "aws_iam_policy" "publish_topics_kms" {
+  name        = "${var.env}-${var.prefix}-forward-sns-key"
   description = "The KMS SNS key policy for forward lambda"
   policy      = data.aws_iam_policy_document.forward_lambda_kms_sns_policy.json
 }
 
 resource "aws_iam_role_policy_attachment" "packer_lambda_key" {
   role       = aws_iam_role.tre_forward_lambda_role.name
-  policy_arn = aws_iam_policy.tre_out_topic_kms.arn
+  policy_arn = aws_iam_policy.publish_topics_kms.arn
 }
 
 
